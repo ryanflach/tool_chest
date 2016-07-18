@@ -16,7 +16,7 @@ describe "Edit a tool", :type => :feature do
     fill_in "Name", :with => "Rake"
     click_button "Update Tool"
 
-    expect(current_path).to eq(tools_path)
+    expect(current_path).to eq(tool_path(Tool.last))
     within ("table tbody") do
       expect(page).to have_content("Rake")
       expect(page).to_not have_content("Screwdriver")

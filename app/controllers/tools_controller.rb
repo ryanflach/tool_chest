@@ -1,16 +1,18 @@
 class ToolsController < ApplicationController
+
   def index
     @tools = Tool.all
-    session[:most_recent_tool_id] = Tool.last.id if Tool.any?
   end
 
   def create
     @tool = Tool.new(tool_params)
     if @tool.save
       flash[:notice] = "#{@tool.name} successfully stored!"
+      session[:current_tool_count] = session[:current_tool_count].to_i + 1
+      session[:current_potential_revenue] = session[:current_potential_revenue].to_f + (@tool.price * @tool.quantity)
       redirect_to @tool
     else
-      flash[:error] = "#{@tool.errors.full_messages.join(', ')}"
+      flash.now[:error] = "#{@tool.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -30,7 +32,7 @@ class ToolsController < ApplicationController
   def update
     @tool = tool_for_page
     if @tool.update_attributes(tool_params)
-      redirect_to tools_path
+      redirect_to @tool
     else
       render :edit
     end
