@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if most_recent_tool %>
+    <p>
+      <strong>Newest tool:</strong> <%= most_recent_tool.name %>
+    </p>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

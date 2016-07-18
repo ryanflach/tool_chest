@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
   def index
     @tools = Tool.all
+    session[:most_recent_tool_id] = Tool.last.id if Tool.any?
   end
 
   def create
