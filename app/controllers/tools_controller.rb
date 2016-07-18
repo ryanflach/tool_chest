@@ -6,8 +6,10 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     if @tool.save
-      redirect_to tools_path
+      flash[:notice] = "#{@tool.name} successfully stored!"
+      redirect_to @tool
     else
+      flash[:error] = "#{@tool.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -35,7 +37,7 @@ class ToolsController < ApplicationController
 
   def destroy
     @tool = tool_for_page
-    @tool.destroy 
+    @tool.destroy
     redirect_to tools_path
   end
 

@@ -10,7 +10,7 @@ describe "Create new tool", :type => :feature do
     fill_in "Quantity", :with => 5
     click_button "Create Tool"
 
-    expect(current_path).to eq(tools_path)
+    expect(current_path).to eq(tool_path(Tool.last))
 
     within("table tbody") do
       expect(page).to have_content("Screwdriver")
