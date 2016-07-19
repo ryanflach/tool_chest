@@ -1,2 +1,2 @@
 # Tool Chest
-Turing Mod2 week 3 in-class exercise
+Turing Mod2 week 3 in-class exercise and continued homework.
