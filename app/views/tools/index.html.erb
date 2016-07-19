@@ -1,31 +1,4 @@
 <h1>All Tools</h1>
-<table>
-  <thead>
-    <th>
-      Name
-    </th>
-    <th>
-      Price
-    </th>
-    <th>
-      Quantity
-    </th>
-  </thead>
-  <tbody>
-    <% @tools.each do |tool| %>
-      <tr>
-        <td>
-          <%= link_to tool.name, tool_path(tool.id) %>
-        </td>
-        <td>
-          <%= tool.price %>
-        </td>
-        <td>
-          <%= tool.quantity %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: "list", locals: { target: @tools } %>
 
 <p><%= link_to "Create New Tool", new_tool_path %></p>

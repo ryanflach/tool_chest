@@ -1,0 +1,57 @@
+<table>
+  <thead>
+    <th>
+      Name
+    </th>
+    <th>
+      Price
+    </th>
+    <th>
+      Quantity
+    </th>
+    <th>
+      Category
+    </th>
+  </thead>
+  <tbody>
+    <% if current_user %>
+      <% current_user.tools.each do |tool| %>
+      <tr>
+        <td>
+          <%= link_to tool.name, tool_path(tool.id) %>
+        </td>
+        <td>
+          <%= tool.price %>
+        </td>
+        <td>
+          <%= tool.quantity %>
+        </td>
+        <% if tool.category %>
+          <td>
+            <%= tool.category.name %>
+          </td>
+        <% end %>
+      </tr>
+      <% end %>
+    <% else %>
+      <% target.each do |tool| %>
+        <tr>
+          <td>
+            <%= link_to tool.name, tool_path(tool.id) %>
+          </td>
+          <td>
+            <%= tool.price %>
+          </td>
+          <td>
+            <%= tool.quantity %>
+          </td>
+          <% if tool.category %>
+            <td>
+              <%= tool.category.name %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

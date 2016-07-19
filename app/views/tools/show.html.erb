@@ -1,31 +1,5 @@
 <h1>Product Details for <%= @tool.name %></h1>
-<%= content_tag :div, flash[:notice] %>
-<table>
-  <thead>
-    <th>
-      Name
-    </th>
-    <th>
-      Price
-    </th>
-    <th>
-      Quantity
-    </th>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= @tool.name %>
-      </td>
-      <td>
-        <%= @tool.price %>
-      </td>
-      <td>
-        <%= @tool.quantity %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<%= render partial: "list", locals: { target: [@tool] } %>
 
 <p><%= link_to "Edit Tool", edit_tool_path(@tool) %></p>
 <p><%= link_to "Delete Tool", tool_path(@tool), method: 'DELETE' %></p>

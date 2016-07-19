@@ -8,5 +8,8 @@
   <%= f.label :quantity %>:
   <%= f.number_field :quantity %><br />
 
+  <%= f.label :category_id %>
+  <%= f.select :category_id, categories %><br />
+
   <%= f.submit %>
 <% end %>

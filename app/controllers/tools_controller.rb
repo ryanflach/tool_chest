@@ -8,6 +8,7 @@ class ToolsController < ApplicationController
     @tool = Tool.new(tool_params)
     if @tool.save
       flash[:notice] = "#{@tool.name} successfully stored!"
+      session[:most_recent_tool_id] = @tool.id
       session[:current_tool_count] = session[:current_tool_count].to_i + 1
       session[:current_potential_revenue] = session[:current_potential_revenue].to_f + (@tool.price * @tool.quantity)
       redirect_to @tool
@@ -47,7 +48,7 @@ class ToolsController < ApplicationController
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :quantity, :price)
+    params.require(:tool).permit(:name, :quantity, :price, :category_id)
   end
 
   def tool_for_page

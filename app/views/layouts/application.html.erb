@@ -7,13 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% flash.each do |type, msg| %>
+    <%= content_tag :div, msg, class: "flash-#{type}" %>
+  <% end %>
+
+  <% if current_user %>
+    <p><strong>Welcome, <%= current_user.username %>!</strong></p>
+    <p><%= link_to "Logout", logout_path, method: :delete %></p>
+  <% else %>
+    <p><%= link_to "Login", login_path %></p>
+  <% end %>
+
   <% if most_recent_tool %>
-    <p>
-      <strong>Newest tool:</strong> <%= most_recent_tool.name %>
-    </p>
-    <p>
-      <strong>Current Sessions Tool Summary:</strong> <%= current_tool_summary %>
-    </p>
+    <p><strong>Newest tool:</strong> <%= most_recent_tool.name %></p>
+    <p><strong>Current Sessions Tool Summary:</strong> <%= current_tool_summary %></p>
   <% end %>
 
   <%= yield %>
