@@ -1,0 +1,6 @@
+<h1>Tools in Category '<%= @category.name %>'</h1>
+<ul>
+  <% @category.each do |tool| %>
+    <li><%= link_to tool.name, tool %></li>
+  <% end %>
+</ul>

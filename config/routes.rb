@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root to: 'tools#index'
 
+  namespace :admin do
+    resources :categories
+  end
+
+  resources :categories, only: [:show]
+
   resources :tools
+
+  resources :user, only: [:edit, :update]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

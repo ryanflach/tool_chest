@@ -13,7 +13,7 @@
 
   <% if current_user %>
     <p><strong>Welcome, <%= current_user.username %>!</strong></p>
-    <p><%= link_to "Logout", logout_path, method: :delete %></p>
+    <p><%= link_to "Logout", logout_path, method: :delete %> <%= link_to "Edit User", edit_user_path(current_user) %></p>
   <% else %>
     <p><%= link_to "Login", login_path %></p>
   <% end %>

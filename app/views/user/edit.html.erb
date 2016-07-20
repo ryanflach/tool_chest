@@ -1,0 +1,13 @@
+<h1>Edit <%= @user.username %></h1>
+<p>
+  Please enter a new username and/or password
+</p>
+<%= form_for(@user) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br />
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br />
+
+  <%= f.submit %>
+<% end %>

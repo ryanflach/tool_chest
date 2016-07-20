@@ -28,7 +28,7 @@
         </td>
         <% if tool.category %>
           <td>
-            <%= tool.category.name %>
+            <%= link_to tool.category.name, category_path(tool.category) %>
           </td>
         <% end %>
       </tr>
