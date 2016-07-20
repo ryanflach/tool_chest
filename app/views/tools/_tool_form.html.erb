@@ -11,5 +11,10 @@
   <%= f.label :category_id %>
   <%= f.select :category_id, categories %><br />
 
+  <% if current_admin? %>
+    <%= f.label :user_id %>
+    <%= f.select :user_id, default_users %>
+  <% end %>
+
   <%= f.submit %>
 <% end %>
